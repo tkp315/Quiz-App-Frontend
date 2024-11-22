@@ -1,4 +1,4 @@
-import Card from "../components/card";
+import Card from "../components/Card";
 import login from "../assets/login.jpeg";
 import { useState } from "react";
 import { STUDENT, TEACHER } from "../helpers/constants";
