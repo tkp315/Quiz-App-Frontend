@@ -1,0 +1,3 @@
+export const GOOGLE_CLIENT_ID="757983321900-06t2debs4i7l1anum03sjpiim8binuqq.apps.googleusercontent.com"
+
+export const GOOGLE_CLIENT_SECRET="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"

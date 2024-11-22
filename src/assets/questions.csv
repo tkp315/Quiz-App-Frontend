@@ -1,0 +1,11 @@
+question,options,correct_ans,difficulty,marks,tags,createdAt,createdBy
+What is the capital of France?,"Paris,London,Berlin,Madrid",Paris,Easy,5,"geography,capital",2024-11-19T06:51:52.882230,673c374016eb011590c08e8c
+What is 2+2?,"3,4,5,6",4,Easy,2,"math,arithmetic",2024-11-19T06:51:52.882245,673c374016eb011590c08e8c
+Who wrote 'Hamlet'?,"Shakespeare,Dickens,Tolstoy,Hemingway",Shakespeare,Medium,10,"literature,playwright",2024-11-19T06:51:52.882249,673c374016eb011590c08e8c
+What is the boiling point of water?,"100C,90C,120C,150C",100C,Medium,5,"science,chemistry",2024-11-19T06:51:52.882251,673c374016eb011590c08e8c
+Who discovered gravity?,"Newton,Einstein,Galileo,Kepler",Newton,Easy,3,"science,physics",2024-11-19T06:51:52.882254,673c374016eb011590c08e8c
+What is the chemical formula for water?,"H2O,CO2,O2,H2",H2O,Easy,2,"science,chemistry",2024-11-19T06:51:52.882257,673c374016eb011590c08e8c
+Who painted the Mona Lisa?,"Leonardo da Vinci,Van Gogh,Picasso,Rembrandt",Leonardo da Vinci,Medium,8,"art,painting",2024-11-19T06:51:52.882260,673c374016eb011590c08e8c
+What is the largest planet in the solar system?,"Jupiter,Saturn,Earth,Mars",Jupiter,Easy,4,"astronomy,planets",2024-11-19T06:51:52.882264,673c374016eb011590c08e8c
+What is the powerhouse of the cell?,"Mitochondria,Nucleus,Ribosome,Chloroplast",Mitochondria,Medium,6,"biology,cell",2024-11-19T06:51:52.882267,673c374016eb011590c08e8c
+What is the square root of 64?,"6,8,10,12",8,Easy,2,"math,arithmetic",2024-11-19T06:51:52.882270,673c374016eb011590c08e8c
