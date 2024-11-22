@@ -1,9 +1,8 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import GoogleLogin from '../components/Auth/GoogleLogin';
-import { GOOGLE_CLIENT_ID } from '../../constants';
-import { useState } from 'react';
+import PropType from 'prop-types'
 
-
+const GOOGLE_CLIENT_ID = import.meta.env.GOOGLE_CLIENT_ID
 
 
 function AuthProvider({role}) {
@@ -12,6 +11,10 @@ function AuthProvider({role}) {
     <GoogleLogin role={role}/>
    </GoogleOAuthProvider>
   )
+}
+
+AuthProvider.propTypes = {
+  role:PropType.string.isRequired
 }
 
 export default AuthProvider
