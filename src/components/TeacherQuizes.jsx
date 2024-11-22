@@ -24,7 +24,7 @@ function TeacherQuizes() {
 
   const [isOpen, setIsOpen] = useState(false);
   const isQuizArray = myQuizzesArr.length > 0;
-  const [active,setActive] = useState("editPhoto")
+//   const [active,setActive] = useState("editPhoto")
 
   return (
     <div className="flex flex-col px-10 py-4 m-10 shadow-md bg-gradient-to-r from-[#eddabe] via-[#ece3da] to-white border-b-2 border-slate-200 rounded-md gap-4 relative">
@@ -67,7 +67,7 @@ function TeacherQuizes() {
                     className="absolute top-2 right-2 bg-blue-600 text-white p-1 rounded-full shadow-md hover:bg-blue-700"
                     onClick={() => {
                         setIsOpen(true)
-                        setActive("editPhoto")
+                        // setActive("editPhoto")
                         setSelectedQuizId(item._id)
                     }} // Replace alert with actual edit logic
                   >
@@ -91,7 +91,7 @@ function TeacherQuizes() {
                 <button 
                 onClick={()=>{
                     setIsOpen(true)
-                    setActive("questions")
+                    // setActive("questions")
                 }}
                 className="text-sm font-medium text-blue-600 hover:underline">
                   Add More Questions

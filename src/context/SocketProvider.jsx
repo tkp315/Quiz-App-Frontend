@@ -18,7 +18,7 @@ const SocketProvider = ({ children }) => {
   // Use useMemo to initialize the socket connection once
   const [mySocket,setMySocket] = useState(null);
   const socket = useMemo(() => {
-    const newSocket = io("http://localhost:8080");
+    const newSocket = io("https://quiz-app-s80k.onrender.com");
 
     newSocket.on("connect", () => {
       console.log("Connected with socket id", newSocket.id);
