@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { loginThunk } from "../redux/slice/userSlice";
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { showErrorToast } from "../helpers/toastUtils";
 
 function Login() {
   const [state, setState] = useState({
@@ -27,21 +29,14 @@ function Login() {
 
     try {
       const res = await dispatch(loginThunk(formData));
-      console.log(res)
-       // Dispatch loginThunk action
-      if (res.payload) {  // Check for successful login
-        // Navigate to home page on successful login
+      if (res.payload) {  
         navigate("/"); 
-      } else {
-        // Handle error cases, can set an error state to show a message
-        console.log("Login failed:", res.payload.message);
-      }
+      } 
     } catch (err) {
-        console.log(err)
-      const errMsg = axios.isAxiosError(err) ? err.response.data : "An error occurred";
-      console.log("Error during login:", errMsg);
-    }
+      const errMsg = axios.isAxiosError(err) ? err.response?.data || "An error occurred" : "An error occurred";
+      showErrorToast(errMsg)
   };
+}
  
   return (
     <div className=" p-6 bg-white rounded-lg shadow-lg border border-gray-200">

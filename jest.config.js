@@ -1,10 +1,10 @@
 // jest.config.js
 export default {
-    testEnvironment: "jsdom", // Required for testing React components
+    testEnvironment: "jsdom", 
     transform: {
-      "^.+\\.jsx?$": "babel-jest", // Ensure `.jsx` files are processed
+      "^.+\\.jsx?$": "babel-jest", 
     },
-    moduleFileExtensions: ["js", "jsx"], // Allow importing `.jsx` files
+    moduleFileExtensions: ["js", "mjs", "cjs", "jsx", "ts", "tsx", "json", "node"], 
     setupFilesAfterEnv: ["<rootDir>/jest.setup.js"], // Setup Jest after environment
     globals: {
       "babel-jest": {

@@ -134,6 +134,8 @@ const user = createSlice({
         setGoogleUser:(state,action)=>{
            console.log(action)
            state.googleUser= action.payload;
+           state.isLoggedIn=true;
+           localStorage.setItem('isLoggedIn','true');
            localStorage.setItem('googleUser',JSON.stringify(state.googleUser))
         }
     },

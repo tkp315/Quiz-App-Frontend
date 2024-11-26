@@ -6,9 +6,12 @@ import { FaGoogle } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { setGoogleUser } from '../../redux/slice/userSlice';
 import PropTypes from 'prop-types';
+
 function GoogleLogin({role}) {
+
 const navigate = useNavigate()
 const dispatch = useDispatch()
+
 const responseGoogle = async(authResult)=>{
 
     try {
@@ -28,6 +31,7 @@ const responseGoogle = async(authResult)=>{
         console.log('google login error',error)
     }
 }
+
 const googleLogin = useGoogleLogin({
     onSuccess:responseGoogle,
     onError:responseGoogle,

@@ -5,9 +5,8 @@ import AuthProvider from "../context/AuthProvider";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signupThunk } from "../redux/slice/userSlice";
-import { useNavigate } from "react-router-dom";
 import PropType from 'prop-types'
-function Signup({ role }) {
+function Signup({ role,handleModal}) {
   const schema = Yup.object().shape({
     name: Yup.string()
       .required("Name is required")
@@ -42,9 +41,10 @@ function Signup({ role }) {
         [name]:value
      })
    }
+   const [modal,setModal] = useState("");
+    handleModal(modal)
    const [errors,setErrors] = useState({});
    const dispatch = useDispatch();
-   const navigate = useNavigate()
    const handleFormSubmission = async(e)=>{
      e.preventDefault();
 
@@ -60,10 +60,9 @@ function Signup({ role }) {
             abortEarly:false
         })
         const res = await dispatch(signupThunk(formData))
-        if(res.statusCode===200){
-         navigate('/')
+        if(res.payload.statusCode===200){
+        setModal("Login")
         }
-        console.log(res);
      } catch (err) {
         const validationErrors = {};
       err.inner.forEach((error) => {
@@ -150,7 +149,8 @@ function Signup({ role }) {
 }
 
 Signup.propTypes = {
-  role:PropType.string.isRequired
+  role:PropType.string.isRequired,
+  handleModal: PropType.func
 }
 
 export default Signup;
