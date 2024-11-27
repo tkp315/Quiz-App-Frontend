@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchQuizById, submitQuizThunk } from "../redux/slice/quizSlice";
 import { useParams } from "react-router-dom";
 import { useSocket } from "../context/SocketProvider";
-import { EASY } from "../helpers/constants";
+import { EASY, HARD, MEDIUM } from "../helpers/constants";
 import QuizReport from "../components/QuizReport";
 import Navbar from "../layouts/Navbar";
 
@@ -42,7 +42,7 @@ function PlayQuiz() {
 
   useEffect(() => {
     if (quiz && quiz.questions?.length > 0) {
-      const firstQuestion = quiz.questions.find((q) => q.difficulty === EASY);
+      const firstQuestion = quiz.questions.find((q) => q.difficulty === EASY||q.difficulty===MEDIUM || q.difficulty===HARD);
       if (firstQuestion) {
         setCurrQuestion(firstQuestion);
         setQuestionCount(1);

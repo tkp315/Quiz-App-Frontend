@@ -6,8 +6,9 @@ import { FaGoogle } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { setGoogleUser } from '../../redux/slice/userSlice';
 import PropTypes from 'prop-types';
+import { showErrorToast, showSuccessToast } from '../../helpers/toastUtils';
 
-function GoogleLogin({role}) {
+function GoogleLogin({role,btnText}) {
 
 const navigate = useNavigate()
 const dispatch = useDispatch()
@@ -22,9 +23,12 @@ const responseGoogle = async(authResult)=>{
             console.log(res)
 
             if(res.status===200){
+              console.log(res.data.data)
                 dispatch(setGoogleUser(res.data.data));
+                showSuccessToast(`Welcome back,${res.data.data.user.name}`)
                navigate('/')
             }
+            
         }
         
     } catch (error) {
@@ -44,14 +48,15 @@ const googleLogin = useGoogleLogin({
   onClick={googleLogin}
 >
   <FaGoogle className="text-red-500 text-2xl" />
-  <span className="font-medium">Sign in with Google</span>
+  <span className="font-medium">{btnText || 'Sign in with Google'}</span>
 </button>
     </div>
   )
 }
 
 GoogleLogin.propTypes = {
-  role: PropTypes.string.isRequired, // role is required and must be a string
+  role: PropTypes.string.isRequired,
+  btnText: PropTypes.string.isRequired, // role is required and must be a string
 };
 
 export default GoogleLogin

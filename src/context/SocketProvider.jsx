@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { io } from "socket.io-client";
 import PropType from 'prop-types'
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 // Create the context for socket
 const socketContext = createContext(null);
 
@@ -17,8 +17,9 @@ export const useSocket = () => {
 const SocketProvider = ({ children }) => {
   // Use useMemo to initialize the socket connection once
   const [mySocket,setMySocket] = useState(null);
+  
   const socket = useMemo(() => {
-    const newSocket = io("https://quiz-app-s80k.onrender.com");
+    const newSocket = io(BACKEND_URL);
 
     newSocket.on("connect", () => {
       console.log("Connected with socket id", newSocket.id);

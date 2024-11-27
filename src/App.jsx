@@ -24,6 +24,9 @@ function App() {
         <Route path="/login" element={<Auth />}></Route>
         <Route element={<RequiredAuth allowedRoles={[TEACHER,STUDENT]}/>}>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/quizzes" element={<Quiz />}></Route>
+        <Route path="/report" element={<ReportCard />}></Route>
+
         </Route>
         <Route path="/*" element={<NotFound />}></Route>
         <Route path="/access-denied" element={<AccessDenied />}></Route>
@@ -32,13 +35,12 @@ function App() {
           <Route path="/create-quiz" element={<CreateQuiz />}></Route>
           <Route path={`/activity/${TEACHER}`} element={<Activity />}></Route>
         </Route>
-        <Route path="/quizzes" element={<Quiz />}></Route>
+        
         <Route
           path="/quizzes/quiz-details/:quizId"
           element={<QuizDetails />}
         ></Route>
         <Route path="/quizzes/play-quiz/:quizId" element={<PlayQuiz />}></Route>
-        <Route path="/report" element={<ReportCard />}></Route>
       </Routes>
     </>
   );

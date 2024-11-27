@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { STUDENT, TEACHER } from "../helpers/constants";
+import { GOOGLE_BTN_TEXT, STUDENT, TEACHER } from "../helpers/constants";
 import { signupData } from "../helpers/data";
 import AuthProvider from "../context/AuthProvider";
 import { useState } from "react";
@@ -41,8 +41,7 @@ function Signup({ role,handleModal}) {
         [name]:value
      })
    }
-   const [modal,setModal] = useState("");
-    handleModal(modal)
+ 
    const [errors,setErrors] = useState({});
    const dispatch = useDispatch();
    const handleFormSubmission = async(e)=>{
@@ -61,7 +60,8 @@ function Signup({ role,handleModal}) {
         })
         const res = await dispatch(signupThunk(formData))
         if(res.payload.statusCode===200){
-        setModal("Login")
+          handleModal("Login")
+
         }
      } catch (err) {
         const validationErrors = {};
@@ -141,7 +141,7 @@ function Signup({ role,handleModal}) {
         
       </form>
       <div>
-        <AuthProvider role={role}/>
+        <AuthProvider role={role} btnHeading={GOOGLE_BTN_TEXT}/>
       </div>
       {/* signup with google */}
     </div>

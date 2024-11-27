@@ -51,8 +51,8 @@ function Auth() {
         </div>
 
         <div className="">
-          {currView=== "Teacher" && <Signup role={TEACHER} />}
-          {currView === "Student" && <Signup role={STUDENT} handleModal={handleClick} />}
+          {currView=== "Teacher" && <Signup role={TEACHER} handleModal={setCurrView}/>}
+          {currView === "Student" && <Signup role={STUDENT} handleModal={setCurrView} />}
           {currView === "Login" && <Login/>}
         </div>
       </div>

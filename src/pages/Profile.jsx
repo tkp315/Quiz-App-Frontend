@@ -20,7 +20,7 @@ function Profile() {
   const navigate = useNavigate();
   // Fetch user data from Redux store
   const { auth,profileSlice } = useSelector((state) => state);
-  const {user,profile} = auth;
+  const {user,profile,googleUserProfile} = auth;
   const {updatedProfile} =profileSlice
   const { role } = user;
 
@@ -91,7 +91,7 @@ function Profile() {
           <div className="relative">
             <figure>
               <img
-                src={updatedProfile?.picture ||profile.picture|| "https://via.placeholder.com/150"}
+                src={updatedProfile?.picture ||profile.picture|| googleUserProfile.picture||"https://via.placeholder.com/150"}
                 alt="Profile"
                 className="rounded-full w-32 h-32 border-4 border-primary"
               />

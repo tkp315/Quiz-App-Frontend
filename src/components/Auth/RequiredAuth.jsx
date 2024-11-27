@@ -3,8 +3,10 @@ import { Link, Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import PropTypes from 'prop-types';
 function RequiredAuth({ allowedRoles }) {
-  const { isLoggedIn ,user} = useSelector((state) => state.auth);
-  const role = user.role
+  const { isLoggedIn ,user,googleUser} = useSelector((state) => state.auth);
+  console.log(user.role)
+
+  const role = user.role||googleUser?.role
   return isLoggedIn && allowedRoles.find((myrole) => myrole === role) ? (
     <Outlet></Outlet>
   ) : isLoggedIn ? (

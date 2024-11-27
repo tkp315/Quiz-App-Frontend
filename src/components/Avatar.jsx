@@ -7,7 +7,7 @@ import { logoutThunk } from "../redux/slice/userSlice";
 
 function Avatar() {
   const { auth,profileSlice } = useSelector((state) => state);
-  const {user,profile,isLoggedIn} = auth;
+  const {user,profile,isLoggedIn,googleUserProfile} = auth;
   const {updatedProfile} =profileSlice
   const { role } = user;
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ function Avatar() {
       <div className="w-10 rounded-full">
         <img
           alt="Tailwind CSS Navbar component"
-          src={updatedProfile?.picture||profile?.picture||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
+          src={updatedProfile?.picture||profile?.picture||googleUserProfile.picture||"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
       </div>
     </div>
     <ul

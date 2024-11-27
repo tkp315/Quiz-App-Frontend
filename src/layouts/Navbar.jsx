@@ -7,8 +7,8 @@ import PropType from 'prop-types'
 
 function Navbar({ children }) {
   const { auth } = useSelector((state) => state);
-  const { user, isLoggedIn } = auth;
-  const role = user.role;
+  const { user, isLoggedIn,googleUser } = auth;
+  const role = user.role||googleUser?.role;
 
   return (
     <>

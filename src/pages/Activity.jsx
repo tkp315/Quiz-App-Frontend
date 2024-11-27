@@ -7,7 +7,8 @@ import TeacherActivity from './TeacherActivity';
 function Activity() {
     const auth= useSelector((state)=>state.auth);
      console.log(auth.user.role)  
-    const {role} = auth.user
+    const role = auth.user.role ||auth.googleUser.role
+    
   return (
     <Navbar>
     {role===TEACHER ? (

@@ -2,24 +2,30 @@ import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { myQuestions } from "../redux/slice/quizSlice";
 import PropType from 'prop-types'
+import toast from "react-hot-toast";
+import { showSuccessToast } from "../helpers/toastUtils";
 function QuestionModal({ modalHandling, questionArrayHandling }) {
     const [questionsArray,setQuestionsArray] =useState([]);
     const [totalQuestions,setTotalQuestions] =useState([]);
     const {quiz} = useSelector((state)=>state);
     const {areQuestionsUpdated}=quiz;
+ 
    console.log(questionsArray)
 
   function handleQuestionArray(e,id){
     if(e.target.checked){
         setQuestionsArray((prev)=>{
+         
          return prev.includes(id)?prev:[...prev,id]
         })
+        
     }
     else {
-        setQuestionsArray((prev)=>{
+        setQuestionsArray((prev)=>{   
         return prev.filter((e)=>e!==id)
         })
     }
+   
    }
    const dispatch = useDispatch();
    useEffect(()=>{
@@ -35,6 +41,10 @@ function QuestionModal({ modalHandling, questionArrayHandling }) {
     
    [areQuestionsUpdated,dispatch])
    questionArrayHandling(questionsArray)
+   const handleModal = ()=>{
+     modalHandling(false)
+     showSuccessToast(`${questionsArray.length} questions are added`)
+   }
   return (
     <div className="flex justify-center items-center px-4 py-6 w-full h-screen bg-black bg-opacity-30 fixed top-0 left-0 z-50  ">
       <div className="p-6 overflow-y-scroll h-[50vh] bg-white rounded-lg shadow-lg border border-gray-200 w-full max-w-3xl">
@@ -44,10 +54,11 @@ function QuestionModal({ modalHandling, questionArrayHandling }) {
             Select Questions
           </h2>
           <button
-            className="btn btn-sm btn-primary"
-            onClick={() => modalHandling(false)}
+          
+            className={`btn ${questionsArray.length>0?`btn-warning`:`btn-error`}`}
+            onClick={handleModal}
           >
-            Close
+            {questionsArray.length>0?"DONE":"CLOSE"}
           </button>
         </div>
 

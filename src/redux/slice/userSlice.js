@@ -7,7 +7,9 @@ const initialState = {
     isLoggedIn:JSON.parse(localStorage.getItem('isLoggedIn')||false),
     user: JSON.parse(localStorage.getItem('userObject'))||{},
     googleUser:JSON.parse(localStorage.getItem('googleUser')),
-    profile:JSON.parse(localStorage.getItem('profile'))||{}
+    profile:JSON.parse(localStorage.getItem('profile'))||{},
+    googleUserProfile:JSON.parse(localStorage.getItem('googleUserProfile'))||{}
+
 }
 export const signupThunk = createAsyncThunk('signup-thunk',async(data)=>{
     try{
@@ -42,8 +44,7 @@ export const loginThunk = createAsyncThunk('login-thunk',async(data)=>{
     try{
      const res = await  toast.promise(axiosInstance.post("/user/login",data),{
         loading: 'Logging in...',
-        success: (response) =>{ `Welcome back!` 
-            console.log(response)},
+        success: (response) =>{ return `Welcome back! ` },
         error: (error) =>
           error?.response?.data?.message || 'Login failed. Please try again.',
       },{
@@ -133,10 +134,13 @@ const user = createSlice({
     reducers:{
         setGoogleUser:(state,action)=>{
            console.log(action)
-           state.googleUser= action.payload;
+           state.googleUser= action.payload.user;
            state.isLoggedIn=true;
+           state.googleUserProfile=action.payload.profile
            localStorage.setItem('isLoggedIn','true');
            localStorage.setItem('googleUser',JSON.stringify(state.googleUser))
+           localStorage.setItem('googleUserProfile',JSON.stringify(state.googleUserProfile))
+
         }
     },
     extraReducers:(builder)=>{

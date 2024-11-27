@@ -6,6 +6,8 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { showErrorToast } from "../helpers/toastUtils";
+import AuthProvider from "../context/AuthProvider";
+import { GOOGLE_STUDENT_LOGIN, GOOGLE_TEACHER_LOGIN, STUDENT, TEACHER } from "../helpers/constants";
 
 function Login() {
   const [state, setState] = useState({
@@ -84,6 +86,15 @@ function Login() {
           Login
         </button>
       </form>
+      <hr></hr>
+       <p className="text-center mt-2">
+        or
+       </p>
+        <div className="flex-row flex  gap-1">
+        <AuthProvider role={TEACHER} btnHeading={GOOGLE_TEACHER_LOGIN}/>
+        <AuthProvider role={STUDENT} btnHeading={GOOGLE_STUDENT_LOGIN}/>
+        </div>
+        
     </div>
   );
 }
